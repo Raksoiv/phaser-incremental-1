@@ -6,19 +6,12 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.setBaseURL('http://labs.phaser.io');
-        this.load.image('sky', 'assets/skies/space3.png');
-        this.load.image('ground', 'assets/platform.png');
-        this.load.image('star', 'assets/star.png');
-        this.load.image('bomb', 'assets/bomb.png');
-        this.load.spritesheet('dude',
-            'assets/dude.png',
-            { frameWidth: 32, frameHeight: 48 }
-        );
+        this.load.image('ranged-1', 'assets/ranged-1.png');
     }
 
     create() {
-        this.add.image(160, 120, 'sky');
+        this.add.image(160, 120, 'ranged-1');
+        this.cameras.main.setBackgroundColor('#000000');
     }
 
     update() {
