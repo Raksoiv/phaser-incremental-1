@@ -3,6 +3,7 @@ import Phaser from "phaser";
 class Unit extends Phaser.GameObjects.Sprite {
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string) {
         super(scene, x, y, texture);
+        this.y = y - this.displayHeight / 2;
         scene.add.existing(this);
         this.initStats();
     }
@@ -42,8 +43,8 @@ class Unit extends Phaser.GameObjects.Sprite {
         }
     }
 
-    update() {
-        // Custom update logic for the unit
+    update(time: number, delta: number) {
+        this.x += this.getStats().speed;
     }
 }
 

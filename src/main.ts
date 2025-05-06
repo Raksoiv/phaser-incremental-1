@@ -3,6 +3,8 @@ import TankUnit from './units/TankUnit';
 import RangedUnit from './units/RangedUnit';
 
 class GameScene extends Phaser.Scene {
+    private update_list: Phaser.GameObjects.Sprite[] = [];
+
     constructor() {
         super({ key: 'GameScene' });
     }
@@ -15,12 +17,14 @@ class GameScene extends Phaser.Scene {
 
     create() {
         this.add.image(160, 120, 'background');
-        this.add.existing(new TankUnit(this, 200, 152, 'tank-1'));
-        this.add.existing(new RangedUnit(this, 100, 152, 'ranged-1'));
+        this.update_list.push(new TankUnit(this, 200, 160, 'tank-1'));
+        this.update_list.push(new RangedUnit(this, 100, 160, 'ranged-1'));
     }
 
-    update() {
-        // Your custom physics update logic will go here
+    update(time: number, delta: number) {
+        for (const unit of this.update_list) {
+            unit.update(time, delta);
+        }
     }
 }
 

@@ -10,9 +10,5 @@ class TankUnit extends Unit {
             speed: 0.5,
         });
     }
-
-    update() {
-        // Custom update logic for the tank unit
-    }
 }
 export default TankUnit;

@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import Unit from "./BaseUnit";
 
-class RangedUnitt extends Unit {
+class RangedUnit extends Unit {
     protected initStats(): void {
         this.setStats({
             hp: 100,
@@ -10,9 +10,5 @@ class RangedUnitt extends Unit {
             speed: 1,
         });
     }
-
-    update() {
-        // Custom update logic for the ranged unit
-    }
 }
-export default RangedUnitt;
+export default RangedUnit;
