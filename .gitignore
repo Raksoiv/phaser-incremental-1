@@ -116,3 +116,4 @@ docs/
 # Optional: Personal preferences or project-specific ignores
 # my_secret_file.txt
 Art/
+docker-run.sh
