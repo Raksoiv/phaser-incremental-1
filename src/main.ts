@@ -4,6 +4,7 @@ import RangedUnit from './units/RangedUnit';
 
 class GameScene extends Phaser.Scene {
     private update_list: Phaser.GameObjects.Sprite[] = [];
+    private shortcutKeys: { [key: string]: Phaser.Input.Keyboard.Key } = {};
 
     constructor() {
         super({ key: 'GameScene' });
@@ -16,12 +17,27 @@ class GameScene extends Phaser.Scene {
     }
 
     create() {
+        if (this.input.keyboard) {
+            this.shortcutKeys = {
+                one: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE),
+                two: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO),
+            };
+        }
+
         this.add.image(160, 120, 'background');
-        this.update_list.push(new TankUnit(this, 200, 160, 'tank-1'));
-        this.update_list.push(new RangedUnit(this, 100, 160, 'ranged-1'));
     }
 
     update(time: number, delta: number) {
+        // Input handling
+        if (Phaser.Input.Keyboard.JustDown(this.shortcutKeys.one)) {
+            const unit = new TankUnit(this, 50, 160, 'tank-1');
+            this.update_list.push(unit);
+        }
+        if (Phaser.Input.Keyboard.JustDown(this.shortcutKeys.two)) {
+            const unit = new RangedUnit(this, 50, 160, 'ranged-1');
+            this.update_list.push(unit);
+        }
+
         for (const unit of this.update_list) {
             unit.update(time, delta);
         }
