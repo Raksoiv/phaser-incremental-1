@@ -7,7 +7,7 @@ class TankUnit extends Unit {
             hp: 200,
             attack: 5,
             armor: 10,
-            speed: 0.5,
+            speed: 10,
         });
     }
 }

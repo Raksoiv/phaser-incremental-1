@@ -1,8 +1,11 @@
 import Phaser from 'phaser';
 import TankUnit from './units/TankUnit';
 import RangedUnit from './units/RangedUnit';
+import EnemyMeleeUnit from './units/EnemyMeleeUnit';
 
 class GameScene extends Phaser.Scene {
+    private readonly SPAWN_POSITION = { x: 50, y: 160 };
+
     private update_list: Phaser.GameObjects.Sprite[] = [];
     private shortcutKeys: { [key: string]: Phaser.Input.Keyboard.Key } = {};
 
@@ -14,6 +17,7 @@ class GameScene extends Phaser.Scene {
         this.load.image('ranged-1', 'assets/ranged-1.png');
         this.load.image('background', 'assets/background.png');
         this.load.image('tank-1', 'assets/tank-1.png');
+        this.load.image('melee-enemy-1', 'assets/melee-enemy-1.png');
     }
 
     create() {
@@ -25,16 +29,20 @@ class GameScene extends Phaser.Scene {
         }
 
         this.add.image(160, 120, 'background');
+
+        this.update_list.push(new EnemyMeleeUnit(this, 310, 160, 'melee-enemy-1'));
+        this.update_list.push(new EnemyMeleeUnit(this, 300, 160, 'melee-enemy-1'));
+        this.update_list.push(new EnemyMeleeUnit(this, 290, 160, 'melee-enemy-1'));
     }
 
     update(time: number, delta: number) {
         // Input handling
         if (Phaser.Input.Keyboard.JustDown(this.shortcutKeys.one)) {
-            const unit = new TankUnit(this, 50, 160, 'tank-1');
+            const unit = new TankUnit(this, this.SPAWN_POSITION.x, this.SPAWN_POSITION.y, 'tank-1');
             this.update_list.push(unit);
         }
         if (Phaser.Input.Keyboard.JustDown(this.shortcutKeys.two)) {
-            const unit = new RangedUnit(this, 50, 160, 'ranged-1');
+            const unit = new RangedUnit(this, this.SPAWN_POSITION.x, this.SPAWN_POSITION.y, 'ranged-1');
             this.update_list.push(unit);
         }
 

@@ -44,7 +44,7 @@ class Unit extends Phaser.GameObjects.Sprite {
     }
 
     update(time: number, delta: number) {
-        this.x += this.getStats().speed;
+        this.x += this.getStats().speed * delta / 1000;
     }
 }
 
