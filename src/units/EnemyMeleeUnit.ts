@@ -6,8 +6,10 @@ class EnemyMeleeUnit extends Unit {
         this.setStats({
             hp: 100,
             attack: 10,
-            armor: 5,
+            armor: 0,
             speed: -15,
+            range: 10,
+            team: this.TEAMS.ENEMY,
         });
     }
 }

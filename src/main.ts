@@ -2,12 +2,13 @@ import Phaser from 'phaser';
 import TankUnit from './units/TankUnit';
 import RangedUnit from './units/RangedUnit';
 import EnemyMeleeUnit from './units/EnemyMeleeUnit';
+import Unit from './units/BaseUnit';
 
 class GameScene extends Phaser.Scene {
     private readonly SPAWN_POSITION = { x: 50, y: 160 };
 
-    private update_list: Phaser.GameObjects.Sprite[] = [];
     private shortcutKeys: { [key: string]: Phaser.Input.Keyboard.Key } = {};
+    protected update_list: Unit[] = [];
 
     constructor() {
         super({ key: 'GameScene' });

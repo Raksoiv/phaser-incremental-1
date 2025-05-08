@@ -5,9 +5,11 @@ class RangedUnit extends Unit {
     protected initStats(): void {
         this.setStats({
             hp: 100,
-            attack: 10,
-            armor: 5,
+            attack: 2,
+            armor: 0,
             speed: 15,
+            range: 50,
+            team: this.TEAMS.PLAYER,
         });
     }
 }
