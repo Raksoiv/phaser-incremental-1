@@ -5,7 +5,7 @@ import EnemyMeleeUnit from './units/EnemyMeleeUnit';
 import Unit from './units/BaseUnit';
 
 class GameScene extends Phaser.Scene {
-    private readonly SPAWN_POSITION = { x: 50, y: 160 };
+    readonly SPAWN_POSITION = { x: 50, y: 160 };
 
     private shortcutKeys: { [key: string]: Phaser.Input.Keyboard.Key } = {};
     protected update_list: Unit[] = [];
@@ -15,10 +15,11 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('ranged-1', 'assets/ranged-1.png');
+        this.load.spritesheet('ranged-1', 'assets/ranged-1.png', { frameWidth: 16, frameHeight: 16 });
         this.load.image('background', 'assets/background.png');
         this.load.image('tank-1', 'assets/tank-1.png');
         this.load.image('melee-enemy-1', 'assets/melee-enemy-1.png');
+        this.load.spritesheet('ranged-1-shoot', 'assets/ranged-1-shoot.png', { frameWidth: 16, frameHeight: 16 });
     }
 
     create() {
